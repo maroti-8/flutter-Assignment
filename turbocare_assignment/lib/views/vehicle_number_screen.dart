@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turbocare_assignment/views/vehicle_class_screen.dart';
 
 class VehicleNumber extends StatelessWidget {
   const VehicleNumber({super.key});
@@ -7,19 +8,18 @@ class VehicleNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget enterVehicleNumber = Container(
       padding: const EdgeInsets.all(40),
-      child:
-          Column(mainAxisAlignment: MainAxisAlignment.start, children: const [
-        Align(
+      child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        const Align(
           alignment: Alignment.topLeft,
           child: Text(
             "VEHICLE NUMBER",
             textAlign: TextAlign.start,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
-        TextField(
+        const TextField(
           decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 1, color: Colors.grey)),
@@ -29,10 +29,18 @@ class VehicleNumber extends StatelessWidget {
             child: Align(
           alignment: Alignment.bottomRight,
           child: CircleAvatar(
-            radius: 40,
-            backgroundColor: Colors.blue,
-            child: Icon(Icons.arrow_forward_ios_rounded, size: 20),
-          ),
+              radius: 40,
+              backgroundColor: Colors.deepPurple,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const VehicleClass()));
+                },
+                icon: const Icon(Icons.arrow_forward_ios_rounded,
+                    size: 40, color: Colors.white),
+              )),
         ))
       ]),
     );
@@ -42,12 +50,6 @@ class VehicleNumber extends StatelessWidget {
         title: const Text("Create New Vehicle Profile"),
       ),
       body: enterVehicleNumber,
-
-      /* const BottomAppBar(
-          child: CircleAvatar(
-        backgroundColor: Colors.blue,
-        child: Icon(Icons.arrow_forward_ios_rounded, size: 20),
-      )) */
     );
   }
 }
