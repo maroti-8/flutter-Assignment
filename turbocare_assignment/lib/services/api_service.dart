@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
-class RemoteService {
+class ApiService {
   static var client = http.Client();
 
   static Future<dynamic> fetchTwoWheeler() async {
@@ -14,7 +15,7 @@ class RemoteService {
           List<String>.from(json.decode(str).map((x) => x));
       return twoWhheelerFromJson(response.body);
     } else {
-      return print(response.statusCode);
+      return null;
     }
   }
 
@@ -41,7 +42,20 @@ class RemoteService {
           List<String>.from(json.decode(str).map((x) => x));
       return modelsFromJson(response.body);
     } else {
-      print('API is not Availabel');
+      log('API is not Availabel');
+    }
+  }
+
+  static Future<dynamic> fetchModel(String vehicleClass, String make) async {
+    final response = await client.get(Uri.parse(
+        'https://test.turbocare.app/turbo/care/v1/models?class=$vehicleClass&make=$make'));
+
+    if (response.statusCode == 200) {
+      List<String> modelsFromJson(String str) =>
+          List<String>.from(json.decode(str).map((x) => x));
+      return modelsFromJson(response.body);
+    } else {
+      log('API is not Availabel');
     }
   }
 }

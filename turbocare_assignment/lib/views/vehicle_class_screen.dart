@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:turbocare_assignment/models/vehicle.dart';
+import 'package:turbocare_assignment/views/vehicle_make_screen.dart';
 
 class VehicleClass extends StatelessWidget {
-  const VehicleClass({super.key});
+  final Vehicle vehicle;
+  const VehicleClass({super.key, required this.vehicle});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,15 @@ class VehicleClass extends StatelessWidget {
                         const Text("Two Wheeler"),
                         const Spacer(),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              vehicle.vehicleClass = "2w";
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => VehicleMake(
+                                            vehicle: vehicle,
+                                          )));
+                            },
                             icon: const Icon(Icons.arrow_forward_ios))
                       ],
                     ),
@@ -32,7 +43,15 @@ class VehicleClass extends StatelessWidget {
                         const Text("Four Wheeler"),
                         const Spacer(),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              vehicle.vehicleClass = "4w";
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => VehicleMake(
+                                            vehicle: vehicle,
+                                          )));
+                            },
                             icon: const Icon(Icons.arrow_forward_ios))
                       ],
                     ),
@@ -40,23 +59,6 @@ class VehicleClass extends StatelessWidget {
                 ],
               ),
             )),
-            Expanded(
-                child: Align(
-              alignment: Alignment.bottomRight,
-              child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.deepPurple,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const VehicleClass()));
-                    },
-                    icon: const Icon(Icons.arrow_forward_ios_rounded,
-                        size: 40, color: Colors.white),
-                  )),
-            ))
           ],
         ));
 
