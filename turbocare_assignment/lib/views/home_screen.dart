@@ -9,7 +9,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget homePageButtons = Container(
       padding: const EdgeInsets.all(24),
-      child: Column(children: [
+      child: Center(
+          child: Column(children: [
         ElevatedButton(
             style: ElevatedButton.styleFrom(minimumSize: const Size(250, 50)),
             onPressed: () {
@@ -29,12 +30,13 @@ class HomePage extends StatelessWidget {
             child: const Text(
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 "Vehicle List")),
-      ]),
+      ])),
     );
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
+        automaticallyImplyLeading: false,
       ),
       body: homePageButtons,
     );

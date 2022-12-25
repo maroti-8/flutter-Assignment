@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turbocare_assignment/database/local_storage.dart';
 import 'package:turbocare_assignment/models/vehicle.dart';
+import 'package:turbocare_assignment/views/vehicle_list_screen.dart';
 
 class VehicleProfile extends StatefulWidget {
   final Vehicle vehicle;
@@ -23,6 +24,16 @@ class _VehicleProfileState extends State<VehicleProfile> {
               appBar: PreferredSize(
                   preferredSize: const Size.fromHeight(250),
                   child: AppBar(
+                    leading: IconButton(
+                      iconSize: 30,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VehicleList()));
+                      },
+                      icon: const Icon(Icons.arrow_back),
+                    ),
                     flexibleSpace: Container(
                       padding: const EdgeInsets.all(20),
                       child: Column(
