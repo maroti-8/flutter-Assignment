@@ -52,7 +52,6 @@ class _VehicleListState extends State<VehicleList> {
                                 Column(
                                   children: [
                                     Text(
-                                      textAlign: TextAlign.left,
                                       loadVehicle.vehicleNumber,
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -62,7 +61,6 @@ class _VehicleListState extends State<VehicleList> {
                                       height: 3,
                                     ),
                                     Text(
-                                      textAlign: TextAlign.left,
                                       "${loadVehicle.vehicleMake} ${loadVehicle.vehicleModel}",
                                       style: const TextStyle(fontSize: 18),
                                     ),
